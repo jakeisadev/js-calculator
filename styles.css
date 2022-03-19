@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     font-family: 'Oxygen', sans-serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: repeat(6, 100px);
-    font-size: 24px;
+    font-size: 28px;
     width: 425px;
     margin: auto;
     margin-top: 50px;
@@ -26,7 +27,7 @@ body {
     gap: 10px;
 }
 
-.calculator>div {
+.calculator>input {
     padding: 25px;
 }
 
@@ -35,89 +36,13 @@ body {
     text-align: right;
     background-color: #ffffff;
     background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+    padding: 25px 10px 0 0;
 }
 
-.div2 {
-    grid-area: c;
-    text-align: center;
+input[type="button"] {
+    font-size: 28px;
 }
 
-.div3 {
-    grid-area: equals;
-    text-align: center;
-}
-
-.div4 {
-    grid-area: divide;
-    text-align: center;
-}
-
-.div5 {
-    grid-area: seven;
-    text-align: center;
-}
-
-.div6 {
-    grid-area: eight;
-    text-align: center;
-}
-
-.div7 {
-    grid-area: nine;
-    text-align: center;
-}
-
-.div8 {
-    grid-area: star;
-    text-align: center;
-}
-
-.div9 {
-    grid-area: four;
-    text-align: center;
-}
-
-.div10 {
-    grid-area: five;
-    text-align: center;
-}
-
-.div11 {
-    grid-area: six;
-    text-align: center;
-}
-
-.div12 {
-    grid-area: minus;
-    text-align: center;
-}
-
-.div13 {
-    grid-area: one;
-    text-align: center;
-}
-
-.div14 {
-    grid-area: two;
-    text-align: center;
-}
-
-.div15 {
-    grid-area: three;
-    text-align: center;
-}
-
-.div16 {
-    grid-area: plus;
-    text-align: center;
-}
-
-.div17 {
-    grid-area: nothing;
-    text-align: center;
-}
-
-.div18 {
-    grid-area: period;
-    text-align: center;
+input[id="equals"] {
+    grid-column: 1 / span 4;
 }
