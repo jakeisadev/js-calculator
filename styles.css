@@ -14,7 +14,7 @@ body {
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: repeat(6, 100px);
     font-size: 28px;
-    width: 425px;
+    width: 430px;
     margin: auto;
     margin-top: 50px;
     grid-template-areas:
@@ -24,7 +24,12 @@ body {
     "one two three minus"
     "period nothing plus c"
     "equals equals equals equals";
-    gap: 10px;
+}
+
+.calc-container {
+    box-shadow: 0px 0px 20px 0px #aaa;
+    width: 400px;
+    margin: auto;
 }
 
 .calculator>input {
@@ -34,15 +39,26 @@ body {
 .div1 {
     grid-area: display;
     text-align: right;
-    background-color: #ffffff;
-    background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
-    padding: 25px 10px 0 0;
+    background-color: black;
+    padding: 65px 10px 0 0;
+    color: white;
+    font-size: 52px;
+    grid-row: 1 / span 2;
 }
 
 input[type="button"] {
     font-size: 28px;
+    border: 1px solid #d4d4d2;
 }
 
-input[id="equals"] {
-    grid-column: 1 / span 4;
+input[type="button"]:focus {
+    border: 1px solid black;
+}
+
+input[id="zero"] {
+    grid-column: 1 / span 2;
+}
+
+.operator {
+    background-color: #FF9500;
 }
