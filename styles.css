@@ -36,7 +36,7 @@ body {
     padding: 25px;
 }
 
-.div1 {
+#viewer {
     grid-area: display;
     text-align: right;
     background-color: black;
@@ -44,6 +44,8 @@ body {
     color: white;
     font-size: 52px;
     grid-row: 1 / span 2;
+    text-overflow:ellipsis;
+    overflow: hidden;
 }
 
 input[type="button"] {
