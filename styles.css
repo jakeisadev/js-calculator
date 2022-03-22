@@ -32,15 +32,15 @@ body {
     margin: auto;
 }
 
-.calculator>input {
+.calculator>button {
     padding: 25px;
 }
 
-#viewer {
+.viewer {
     grid-area: display;
     text-align: right;
     background-color: black;
-    padding: 65px 10px 0 0;
+    padding: 25px 10px 0 0;
     color: white;
     font-size: 52px;
     grid-row: 1 / span 2;
@@ -48,16 +48,16 @@ body {
     overflow: hidden;
 }
 
-input[type="button"] {
+button[type="button"] {
     font-size: 28px;
     border: 1px solid #d4d4d2;
 }
 
-input[type="button"]:focus {
+button[type="button"]:focus {
     border: 1px solid black;
 }
 
-input[id="zero"] {
+button[value="0"] {
     grid-column: 1 / span 2;
 }
 
