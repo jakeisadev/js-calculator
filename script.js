@@ -1,4 +1,4 @@
-class calculator {
+class Calculator {
 	constructer(previousOperandtextElement, currentOperandTextElement) {
 		this.previousOperandtextElement = previousOperandtextElement;
 		this.currentOperandTextElement = currentOperandTextElement;
@@ -12,13 +12,19 @@ class calculator {
 	delete() { //completely clears screen for user to begin a new calculation
 	}
 	appendNumber(number) { //adds number to the display once user clicks on it
-		this.currentOperand = number;
+    if (number === "." && this.currentOperand.includes('.')) return
+		this.currentOperand = this.currentOperand.toString() + number.toString();
 	}
-	chooseOperation(operation) {}
+	chooseOperation(operation) {
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = '';
+  }
 	compute() {}
 	updateDisplay() {
-		this.currentOperandTextElement.innerText = this.currentOperand;
-	}
+    this.currentOperandTextElement.innerText = this.currentOperand;
+    this.previousOperandtextElement.innerText = this.previousOperand;
+  }
 }
 const numberButtons = document.querySelectorAll('[data-number]'); //querying all elements that match a certain string, in this case [data-number]
 const operationButtons = document.querySelectorAll('[data-operation]'); //querying all elements that match a certain string, in this case [data-operation]
@@ -27,10 +33,17 @@ const deleteButton = document.querySelector('[data-delete]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandtextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
-const calculator = new calculator(previousOperandtextElement, currentOperandTextElement);
+const calculator = new Calculator(previousOperandtextElement, currentOperandTextElement);
 numberButtons.forEach(button => {
 	button.addEventListener('click', () => {
 		calculator.appendNumber(button.innerText);
+		calculator.updateDisplay();
+	});
+});
+
+operationButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		calculator.chooseNumber(button.innerText);
 		calculator.updateDisplay();
 	});
 });
