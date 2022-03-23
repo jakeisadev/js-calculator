@@ -1,51 +1,36 @@
-const calculator = {
-    displayValue: '0',
-    firstOperand: null,
-    waitingForSecondOperand: false,
-    operator: null,
-  };
-  
-  function inputDigit(digit) {
-    const { displayValue } = calculator;
-    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
-  }
-  
-  function inputDecimal(dot) {
-    if (!calculator.displayValue.includes(dot)) {
-      calculator.displayValue += dot;
-    }
-  }
-  
-  function updateDisplay() {
-    const display = document.querySelector('.viewer');
-    display.value = calculator.displayValue;
-  }
-  
-  updateDisplay();
-  
-  const keys = document.querySelector('.calculator');
-  keys.addEventListener('click', (event) => {
-    const { target } = event;
-    if (!target.matches('button')) {
-      return;
-    }
-  
-    if (target.classList.contains('operator')) {
-      console.log('operator', target.value);
-      return;
-    }
-  
-    if (target.classList.contains('decimal')) {
-      inputDecimal(target.value);
-          updateDisplay();
-      return;
-    }
-  
-    if (target.classList.contains('all-clear')) {
-      console.log('clear', target.value);
-      return;
-    }
-  
-    inputDigit(target.value);
-    updateDisplay();
-  });
+class calculator {
+	constructer(previousOperandtextElement, currentOperandTextElement) {
+		this.previousOperandtextElement = previousOperandtextElement;
+		this.currentOperandTextElement = currentOperandTextElement;
+		this.clear();
+	}
+	clear() { //clears screen for user to type a new number onto screen, but doesn't lose progress
+		this.currentOperand = '';
+		this.previousOperand = '';
+		this.operation = undefined;
+	}
+	delete() { //completely clears screen for user to begin a new calculation
+	}
+	appendNumber(number) { //adds number to the display once user clicks on it
+		this.currentOperand = number;
+	}
+	chooseOperation(operation) {}
+	compute() {}
+	updateDisplay() {
+		this.currentOperandTextElement.innerText = this.currentOperand;
+	}
+}
+const numberButtons = document.querySelectorAll('[data-number]'); //querying all elements that match a certain string, in this case [data-number]
+const operationButtons = document.querySelectorAll('[data-operation]'); //querying all elements that match a certain string, in this case [data-operation]
+const equalsButtons = document.querySelector('[data-equals]'); //quering a single element that matches a certain string, in this case [data-equals]
+const deleteButton = document.querySelector('[data-delete]');
+const allClearButton = document.querySelector('[data-all-clear]');
+const previousOperandtextElement = document.querySelector('[data-previous-operand]');
+const currentOperandTextElement = document.querySelector('[data-current-operand]');
+const calculator = new calculator(previousOperandtextElement, currentOperandTextElement);
+numberButtons.forEach(button => {
+	button.addEventListener('click', () => {
+		calculator.appendNumber(button.innerText);
+		calculator.updateDisplay();
+	});
+});
